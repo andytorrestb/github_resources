@@ -2,17 +2,23 @@
 
 This repository is a learning resource for effective GitHub collaboration. Follow these guidelines to ensure smooth teamwork, code quality, and project stability.
 
-## Getting Started: Cloning the Repository
+## Getting Started: Forking the Repository
 
-To get a copy of this project on your computer:
-```sh
-git clone https://github.com/ERAU-CTS/github_resources.git
-cd github_resources
-```
+The main repository should be protected from all direct commits. Users are to create forks of the main repository under their own account and and then open up Pull Requests (PR) on Github so team members can review and accept changes.
+1. Go to the repository page on GitHub https://github.com/ERAU-CTS/github_resources/tree/main.
+2. Click the **Fork** button (top right).
+3. Clone your fork to your computer:
+	```sh
+	git clone https://github.com/<your-username>/github_resources.git
+	cd github_resources
+	```
+4. Make changes and push to your fork (details below).
+5. Open a Pull Request from your fork to the original repository.
+
 
 ## Checking Your Branch Status
 
-To see which branch you are currently on:
+To see which branch you are currently on and what files have changed (before commiting):
 ```sh
 git status
 ```
@@ -23,14 +29,7 @@ To list all branches:
 git branch
 ```
 
-## Viewing Changes and Commit History
-
-To see what files have changed (before you commit):
-```sh
-git status
-```
-
-To see a summary of recent commits:
+To see a summary of recent commits (--oneline is an optional argument for simple output):
 ```sh
 git log --oneline
 ```
@@ -39,19 +38,6 @@ To see what changed in the last commit:
 ```sh
 git show
 ```
-
-## Forking the Repository (for outside contributors)
-
-If you are not a member of the team, you can still contribute by forking:
-1. Go to the repository page on GitHub.
-2. Click the **Fork** button (top right).
-3. Clone your fork to your computer:
-	```sh
-	git clone https://github.com/<your-username>/github_resources.git
-	cd github_resources
-	```
-4. Make changes and push to your fork.
-5. Open a Pull Request from your fork to the original repository.
 
 ## Main Branch Protection
 
@@ -70,17 +56,18 @@ When working on a new feature or bugfix, create a new branch from `main`. Use de
 ```
 feature/<short-description>-<yourname>
 bugfix/<short-description>-<yourname>
+refactor/<short-description>-<yourname>
 ```
 
 **Examples:**
 ```
 git checkout main
 git pull origin main
-git checkout -b feature/login-form-andy
-git checkout -b bugfix/navbar-responsive-jane
+git checkout -b feature/rendezvous_mvp-bob
+git checkout -b bugfix/server_crash-bob
 ```
 
-## Typical Workflow
+## Typical Workflow (assuming project is forked to personal account)
 
 1. **Sync with main:**
 	```
@@ -91,16 +78,36 @@ git checkout -b bugfix/navbar-responsive-jane
 	```
 	git checkout -b feature/awesome-feature-yourname
 	```
-3. **Work and commit locally:**
+3. **Check your changes with `git diff`:**
+	- Before committing, you can review what has changed in your working directory compared to the last commit:
+		```sh
+		git diff
+		```
+	- To see changes staged for commit (after `git add`):
+		```sh
+		git diff --cached
+		```
+	- Example output:
+		```diff
+		diff --git a/README.md b/README.md
+		index e69de29..b6fc4c6 100644
+		--- a/README.md
+		+++ b/README.md
+		@@ ... @@
+		+Added a new section about collaboration.
+		```
+	- Use this to verify your edits before committing.
+
+4. **Work and commit locally:**
 	```
 	git add .
 	git commit -m "Add awesome feature"
 	```
-4. **Push your branch:**
+5. **Push your branch:**
 	```
 	git push origin feature/awesome-feature-yourname
 	```
-5. **Open a Pull Request (PR):**
+6. **Open a Pull Request (PR):**
 	- Go to you repository GitHub and open a PR from your branch to `main`.
 	- Add a clear description of your changes.
 
@@ -133,8 +140,3 @@ Resolve any conflicts, commit, and push again.
 - Use descriptive, unique branch names
 - Always open PRs for review
 - Merge only after approval and tests
-
-Following these steps will help the team collaborate efficiently and maintain high code quality.
-
-# github_resources
-Getting started with GitHub.
