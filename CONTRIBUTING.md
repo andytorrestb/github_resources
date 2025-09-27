@@ -67,7 +67,8 @@ git checkout -b feature/rendezvous_mvp-bob
 git checkout -b bugfix/server_crash-bob
 ```
 
-## Typical Workflow (assuming project is forked to personal account)
+## Typical Workflow 
+This assumes project is forked to personal account and cloned to user PC.
 
 1. **Sync with main:**
 	```
